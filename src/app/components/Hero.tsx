@@ -107,17 +107,18 @@ export default function Hero() {
                         initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.5, delay: 0.4 }}
-                        className="flex gap-4"
+                        className="flex flex-col sm:flex-row gap-4"
                     >
                         <Link
                             href="#projects"
-                            className="px-8 py-4 bg-gradient-to-r from-indigo-600 to-violet-600 text-white rounded-full font-bold hover:shadow-xl hover:shadow-indigo-500/50 transition-all transform hover:-translate-y-1 hover:scale-105"
+                            className="px-8 py-4 bg-gradient-to-r from-indigo-600 to-violet-600 text-white rounded-full font-bold hover:shadow-xl hover:shadow-indigo-500/50 transition-all transform hover:-translate-y-1 hover:scale-105 w-full sm:w-auto text-center"
                         >
                             View Projects
                         </Link>
                         <Link
-                            href="#"
-                            className="px-8 py-4 bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-slate-700 rounded-full font-bold hover:border-indigo-600 dark:hover:border-indigo-400 hover:text-indigo-600 dark:hover:text-indigo-400 transition-all shadow-sm hover:shadow-md flex items-center gap-2 transform hover:-translate-y-1"
+                            href={portfolioData.resume}
+                            target="_blank"
+                            className="px-8 py-4 bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-slate-700 rounded-full font-bold hover:border-indigo-600 dark:hover:border-indigo-400 hover:text-indigo-600 dark:hover:text-indigo-400 transition-all shadow-sm hover:shadow-md flex items-center justify-center gap-2 transform hover:-translate-y-1 w-full sm:w-auto"
                         >
                             <Download size={20} />
                             Download CV

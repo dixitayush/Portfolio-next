@@ -6,6 +6,7 @@ export const portfolioData = {
     website: "https://ayushdixit8932.netlify.app",
     linkedin: "https://linkedin.com/in/ayush-dixit-2316b4153",
     github: "https://github.com/dixitayush",
+    resume: "/Ayush_kumar_full-stack_resume.pdf",
     last_updated: "July 2025",
 
     summary: "Senior Software Engineer with 4 years of hands-on experience building enterprise-grade applications using Java, Spring Boot, Microservices, and modern front-end technologies. Skilled in architecting scalable systems, cloud-native deployment, and cross-functional collaboration. Passionate about clean code, system optimization, and DevOps culture.",

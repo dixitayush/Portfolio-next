@@ -7,14 +7,14 @@ import { portfolioData } from '../data/portfolio';
 
 export default function Experience() {
     return (
-        <section id="experience" className="py-20 bg-slate-50 dark:bg-black">
+        <section id="experience" className="py-12 bg-slate-50 dark:bg-black">
             <div className="container mx-auto px-6">
                 <motion.div
                     initial={{ opacity: 0, y: 20 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
                     transition={{ duration: 0.5 }}
-                    className="mb-16 text-center"
+                    className="mb-12 text-center"
                 >
                     <h2 className="text-4xl font-bold text-slate-900 dark:text-white mb-4">Work Experience</h2>
                     <div className="w-20 h-1 bg-gradient-to-r from-indigo-600 to-violet-600 mx-auto rounded-full" />
