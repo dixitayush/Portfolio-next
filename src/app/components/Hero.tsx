@@ -8,7 +8,7 @@ import Link from 'next/link';
 
 export default function Hero() {
     return (
-        <section id="about" className="relative min-h-screen flex items-center pt-20 overflow-hidden bg-white dark:bg-black">
+        <section id="about" className="relative min-h-screen flex items-center pt-20 pb-20 overflow-hidden bg-white dark:bg-black">
             {/* Animated Background Blobs */}
             <motion.div
                 animate={{

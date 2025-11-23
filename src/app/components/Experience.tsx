@@ -7,7 +7,7 @@ import { portfolioData } from '../data/portfolio';
 
 export default function Experience() {
     return (
-        <section id="experience" className="py-12 bg-slate-50 dark:bg-black">
+        <section id="experience" className="py-20 md:py-12 bg-slate-50 dark:bg-black">
             <div className="container mx-auto px-6">
                 <motion.div
                     initial={{ opacity: 0, y: 20 }}
