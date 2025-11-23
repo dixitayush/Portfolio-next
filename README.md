@@ -85,7 +85,7 @@ With over 4 years of experience, I specialize in building scalable enterprise ap
 -   **Email**: [dixitayush284@gmail.com](mailto:dixitayush284@gmail.com)
 -   **LinkedIn**: [Ayush Kumar](https://linkedin.com/in/ayush-dixit-2316b4153)
 -   **GitHub**: [dixitayush](https://github.com/dixitayush)
--   **Portfolio**: [ayushdixit8932.netlify.app](https://ayushdixit8932.netlify.app)
+-   **Portfolio**: [ayush-portfolio-next.netlify.app](https://ayush-portfolio-next.netlify.app)
 
 ---
 

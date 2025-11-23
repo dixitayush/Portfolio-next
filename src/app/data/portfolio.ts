@@ -3,7 +3,7 @@ export const portfolioData = {
     location: "Noida, Uttar Pradesh, India",
     email: "dixitayush284@gmail.com",
     phone: "+91 8931086751",
-    website: "https://ayushdixit8932.netlify.app",
+    website: "https://ayush-portfolio-next.netlify.app",
     linkedin: "https://linkedin.com/in/ayush-dixit-2316b4153",
     github: "https://github.com/dixitayush",
     resume: "/Ayush_kumar_full-stack_resume.pdf",
