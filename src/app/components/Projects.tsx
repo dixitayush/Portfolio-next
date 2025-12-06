@@ -38,7 +38,7 @@ export default function Projects() {
                                         <FolderGit2 size={24} />
                                     </div>
                                     <div className="flex gap-3">
-                                        <Link href="#" className="text-slate-400 dark:text-slate-500 hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors transform hover:scale-125">
+                                        <Link href="https://github.com/dixitayush/mAI-school" className="text-slate-400 dark:text-slate-500 hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors transform hover:scale-125">
                                             <Github size={20} />
                                         </Link>
                                         <Link href="#" className="text-slate-400 dark:text-slate-500 hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors transform hover:scale-125">
