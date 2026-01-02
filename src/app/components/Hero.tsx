@@ -37,7 +37,28 @@ export default function Hero() {
             />
 
             <div className="container mx-auto px-6 relative z-10">
-                <div className="flex flex-col lg:flex-row items-center justify-between gap-12">
+                <div className="flex flex-col lg:flex-row items-center justify-between gap-12 lg:gap-20">
+                    <motion.div
+                        initial={{ opacity: 0, scale: 0.5 }}
+                        animate={{ opacity: 1, scale: 1 }}
+                        transition={{ duration: 0.5 }}
+                        className="flex-1 relative max-w-sm lg:max-w-md w-full"
+                    >
+                        <div className="relative aspect-square rounded-full overflow-hidden border-4 border-white dark:border-slate-800 shadow-2xl">
+                            <div className="absolute inset-0 bg-gradient-to-tr from-indigo-500/20 to-fuchsia-500/20 z-0"></div>
+                            <Image
+                                src="/profile.png"
+                                alt={portfolioData.name}
+                                fill
+                                className="object-cover z-10"
+                                priority
+                            />
+                        </div>
+                        {/* Decorative Ring */}
+                        <div className="absolute -inset-4 border-2 border-indigo-500/20 rounded-full -z-10 animate-[spin_10s_linear_infinite]" />
+                        <div className="absolute -inset-8 border border-fuchsia-500/10 rounded-full -z-20 animate-[spin_15s_linear_infinite_reverse]" />
+                    </motion.div>
+
                     <div className="flex-1 text-center lg:text-left">
                         <motion.div
                             initial={{ opacity: 0, y: 20 }}
@@ -127,27 +148,6 @@ export default function Hero() {
                             </Link>
                         </motion.div>
                     </div>
-
-                    <motion.div
-                        initial={{ opacity: 0, scale: 0.5 }}
-                        animate={{ opacity: 1, scale: 1 }}
-                        transition={{ duration: 0.5 }}
-                        className="flex-1 relative max-w-sm lg:max-w-md w-full"
-                    >
-                        <div className="relative aspect-square rounded-full overflow-hidden border-4 border-white dark:border-slate-800 shadow-2xl">
-                            <div className="absolute inset-0 bg-gradient-to-tr from-indigo-500/20 to-fuchsia-500/20 z-0"></div>
-                            <Image
-                                src="/profile.png"
-                                alt={portfolioData.name}
-                                fill
-                                className="object-cover z-10"
-                                priority
-                            />
-                        </div>
-                        {/* Decorative Ring */}
-                        <div className="absolute -inset-4 border-2 border-indigo-500/20 rounded-full -z-10 animate-[spin_10s_linear_infinite]" />
-                        <div className="absolute -inset-8 border border-fuchsia-500/10 rounded-full -z-20 animate-[spin_15s_linear_infinite_reverse]" />
-                    </motion.div>
                 </div>
             </div>
         </section>
