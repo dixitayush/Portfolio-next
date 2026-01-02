@@ -5,6 +5,7 @@ import { motion } from 'framer-motion';
 import { Github, Linkedin, Mail, MapPin, Download } from 'lucide-react';
 import { portfolioData } from '../data/portfolio';
 import Link from 'next/link';
+import Image from 'next/image';
 
 export default function Hero() {
     return (
@@ -36,93 +37,116 @@ export default function Hero() {
             />
 
             <div className="container mx-auto px-6 relative z-10">
-                <div className="max-w-4xl">
+                <div className="flex flex-col lg:flex-row items-center justify-between gap-12">
+                    <div className="flex-1 text-center lg:text-left">
+                        <motion.div
+                            initial={{ opacity: 0, y: 20 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            transition={{ duration: 0.5 }}
+                        >
+                            <span className="inline-block py-1 px-3 rounded-full bg-indigo-100 dark:bg-indigo-900/30 text-indigo-700 dark:text-indigo-300 font-medium text-sm mb-6">
+                                Available for new opportunities
+                            </span>
+                        </motion.div>
+
+                        <motion.h1
+                            initial={{ opacity: 0, y: 20 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            transition={{ duration: 0.5, delay: 0.1 }}
+                            className="text-5xl md:text-7xl font-bold text-slate-900 dark:text-white leading-tight mb-6"
+                        >
+                            Hi, I'm{' '}
+                            <span className="bg-gradient-to-r from-indigo-600 via-violet-600 to-fuchsia-600 bg-clip-text text-transparent animate-gradient">
+                                {portfolioData.name}
+                            </span>
+                            <br />
+                            <span className="text-slate-400 dark:text-slate-500">Software Engineer</span>
+                        </motion.h1>
+
+                        <motion.p
+                            initial={{ opacity: 0, y: 20 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            transition={{ duration: 0.5, delay: 0.2 }}
+                            className="text-lg md:text-xl text-slate-600 dark:text-slate-400 mb-8 max-w-2xl leading-relaxed mx-auto lg:mx-0"
+                        >
+                            {portfolioData.summary}
+                        </motion.p>
+
+                        <motion.div
+                            initial={{ opacity: 0, y: 20 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            transition={{ duration: 0.5, delay: 0.3 }}
+                            className="flex flex-wrap gap-4 items-center justify-center lg:justify-start mb-12"
+                        >
+                            <Link
+                                href={portfolioData.linkedin}
+                                target="_blank"
+                                className="p-3 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-full text-slate-600 dark:text-slate-300 hover:text-indigo-600 dark:hover:text-indigo-400 hover:border-indigo-600 dark:hover:border-indigo-400 transition-all shadow-sm hover:shadow-md hover:-translate-y-1"
+                            >
+                                <Linkedin size={24} />
+                            </Link>
+                            <Link
+                                href={portfolioData.github}
+                                target="_blank"
+                                className="p-3 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-full text-slate-600 dark:text-slate-300 hover:text-indigo-600 dark:hover:text-indigo-400 hover:border-indigo-600 dark:hover:border-indigo-400 transition-all shadow-sm hover:shadow-md hover:-translate-y-1"
+                            >
+                                <Github size={24} />
+                            </Link>
+                            <Link
+                                href={`mailto:${portfolioData.email}`}
+                                className="p-3 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-full text-slate-600 dark:text-slate-300 hover:text-indigo-600 dark:hover:text-indigo-400 hover:border-indigo-600 dark:hover:border-indigo-400 transition-all shadow-sm hover:shadow-md hover:-translate-y-1"
+                            >
+                                <Mail size={24} />
+                            </Link>
+
+                            <div className="flex items-center gap-2 px-4 py-2 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-full text-slate-600 dark:text-slate-300">
+                                <MapPin size={18} className="text-indigo-500" />
+                                <span className="text-sm font-medium">{portfolioData.location}</span>
+                            </div>
+                        </motion.div>
+
+                        <motion.div
+                            initial={{ opacity: 0, y: 20 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            transition={{ duration: 0.5, delay: 0.4 }}
+                            className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start"
+                        >
+                            <Link
+                                href="#projects"
+                                className="px-8 py-4 bg-gradient-to-r from-indigo-600 to-violet-600 text-white rounded-full font-bold hover:shadow-xl hover:shadow-indigo-500/50 transition-all transform hover:-translate-y-1 hover:scale-105 w-full sm:w-auto text-center"
+                            >
+                                View Projects
+                            </Link>
+                            <Link
+                                href={portfolioData.resume}
+                                target="_blank"
+                                className="px-8 py-4 bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-slate-700 rounded-full font-bold hover:border-indigo-600 dark:hover:border-indigo-400 hover:text-indigo-600 dark:hover:text-indigo-400 transition-all shadow-sm hover:shadow-md flex items-center justify-center gap-2 transform hover:-translate-y-1 w-full sm:w-auto"
+                            >
+                                <Download size={20} />
+                                Download CV
+                            </Link>
+                        </motion.div>
+                    </div>
+
                     <motion.div
-                        initial={{ opacity: 0, y: 20 }}
-                        animate={{ opacity: 1, y: 0 }}
+                        initial={{ opacity: 0, scale: 0.5 }}
+                        animate={{ opacity: 1, scale: 1 }}
                         transition={{ duration: 0.5 }}
+                        className="flex-1 relative max-w-sm lg:max-w-md w-full"
                     >
-                        <span className="inline-block py-1 px-3 rounded-full bg-indigo-100 dark:bg-indigo-900/30 text-indigo-700 dark:text-indigo-300 font-medium text-sm mb-6">
-                            Available for new opportunities
-                        </span>
-                    </motion.div>
-
-                    <motion.h1
-                        initial={{ opacity: 0, y: 20 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 0.5, delay: 0.1 }}
-                        className="text-5xl md:text-7xl font-bold text-slate-900 dark:text-white leading-tight mb-6"
-                    >
-                        Hi, I'm{' '}
-                        <span className="bg-gradient-to-r from-indigo-600 via-violet-600 to-fuchsia-600 bg-clip-text text-transparent animate-gradient">
-                            {portfolioData.name}
-                        </span>
-                        <br />
-                        <span className="text-slate-400 dark:text-slate-500">Software Engineer</span>
-                    </motion.h1>
-
-                    <motion.p
-                        initial={{ opacity: 0, y: 20 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 0.5, delay: 0.2 }}
-                        className="text-lg md:text-xl text-slate-600 dark:text-slate-400 mb-8 max-w-2xl leading-relaxed"
-                    >
-                        {portfolioData.summary}
-                    </motion.p>
-
-                    <motion.div
-                        initial={{ opacity: 0, y: 20 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 0.5, delay: 0.3 }}
-                        className="flex flex-wrap gap-4 items-center mb-12"
-                    >
-                        <Link
-                            href={portfolioData.linkedin}
-                            target="_blank"
-                            className="p-3 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-full text-slate-600 dark:text-slate-300 hover:text-indigo-600 dark:hover:text-indigo-400 hover:border-indigo-600 dark:hover:border-indigo-400 transition-all shadow-sm hover:shadow-md hover:-translate-y-1"
-                        >
-                            <Linkedin size={24} />
-                        </Link>
-                        <Link
-                            href={portfolioData.github}
-                            target="_blank"
-                            className="p-3 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-full text-slate-600 dark:text-slate-300 hover:text-indigo-600 dark:hover:text-indigo-400 hover:border-indigo-600 dark:hover:border-indigo-400 transition-all shadow-sm hover:shadow-md hover:-translate-y-1"
-                        >
-                            <Github size={24} />
-                        </Link>
-                        <Link
-                            href={`mailto:${portfolioData.email}`}
-                            className="p-3 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-full text-slate-600 dark:text-slate-300 hover:text-indigo-600 dark:hover:text-indigo-400 hover:border-indigo-600 dark:hover:border-indigo-400 transition-all shadow-sm hover:shadow-md hover:-translate-y-1"
-                        >
-                            <Mail size={24} />
-                        </Link>
-
-                        <div className="flex items-center gap-2 px-4 py-2 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-full text-slate-600 dark:text-slate-300">
-                            <MapPin size={18} className="text-indigo-500" />
-                            <span className="text-sm font-medium">{portfolioData.location}</span>
+                        <div className="relative aspect-square rounded-full overflow-hidden border-4 border-white dark:border-slate-800 shadow-2xl">
+                            <div className="absolute inset-0 bg-gradient-to-tr from-indigo-500/20 to-fuchsia-500/20 z-0"></div>
+                            <Image
+                                src="/profile.png"
+                                alt={portfolioData.name}
+                                fill
+                                className="object-cover z-10"
+                                priority
+                            />
                         </div>
-                    </motion.div>
-
-                    <motion.div
-                        initial={{ opacity: 0, y: 20 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 0.5, delay: 0.4 }}
-                        className="flex flex-col sm:flex-row gap-4"
-                    >
-                        <Link
-                            href="#projects"
-                            className="px-8 py-4 bg-gradient-to-r from-indigo-600 to-violet-600 text-white rounded-full font-bold hover:shadow-xl hover:shadow-indigo-500/50 transition-all transform hover:-translate-y-1 hover:scale-105 w-full sm:w-auto text-center"
-                        >
-                            View Projects
-                        </Link>
-                        <Link
-                            href={portfolioData.resume}
-                            target="_blank"
-                            className="px-8 py-4 bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-slate-700 rounded-full font-bold hover:border-indigo-600 dark:hover:border-indigo-400 hover:text-indigo-600 dark:hover:text-indigo-400 transition-all shadow-sm hover:shadow-md flex items-center justify-center gap-2 transform hover:-translate-y-1 w-full sm:w-auto"
-                        >
-                            <Download size={20} />
-                            Download CV
-                        </Link>
+                        {/* Decorative Ring */}
+                        <div className="absolute -inset-4 border-2 border-indigo-500/20 rounded-full -z-10 animate-[spin_10s_linear_infinite]" />
+                        <div className="absolute -inset-8 border border-fuchsia-500/10 rounded-full -z-20 animate-[spin_15s_linear_infinite_reverse]" />
                     </motion.div>
                 </div>
             </div>
