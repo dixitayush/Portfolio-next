@@ -90,22 +90,30 @@ export default function Projects() {
                                             <FolderGit2 size={28} />
                                         </motion.div>
                                         <div className="flex gap-3">
-                                            <motion.div whileHover={{ scale: 1.2, rotate: 5 }} whileTap={{ scale: 0.9 }}>
-                                                <Link
-                                                    href="https://github.com/dixitayush/mAI-school"
-                                                    className="p-2.5 rounded-full text-slate-500 dark:text-slate-400 hover:text-blue-600 dark:hover:text-blue-400 transition-all hover:bg-blue-500/10 dark:hover:bg-blue-400/10"
-                                                >
-                                                    <Github size={20} />
-                                                </Link>
-                                            </motion.div>
-                                            <motion.div whileHover={{ scale: 1.2, rotate: -5 }} whileTap={{ scale: 0.9 }}>
-                                                <Link
-                                                    href="#"
-                                                    className="p-2.5 rounded-full text-slate-500 dark:text-slate-400 hover:text-blue-600 dark:hover:text-blue-400 transition-all hover:bg-blue-500/10 dark:hover:bg-blue-400/10"
-                                                >
-                                                    <ExternalLink size={20} />
-                                                </Link>
-                                            </motion.div>
+                                            {project.github && (
+                                                <motion.div whileHover={{ scale: 1.2, rotate: 5 }} whileTap={{ scale: 0.9 }}>
+                                                    <Link
+                                                        href={project.github}
+                                                        target="_blank"
+                                                        rel="noopener noreferrer"
+                                                        className="p-2.5 rounded-full text-slate-500 dark:text-slate-400 hover:text-blue-600 dark:hover:text-blue-400 transition-all hover:bg-blue-500/10 dark:hover:bg-blue-400/10"
+                                                    >
+                                                        <Github size={20} />
+                                                    </Link>
+                                                </motion.div>
+                                            )}
+                                            {project.demo && (
+                                                <motion.div whileHover={{ scale: 1.2, rotate: -5 }} whileTap={{ scale: 0.9 }}>
+                                                    <Link
+                                                        href={project.demo}
+                                                        target="_blank"
+                                                        rel="noopener noreferrer"
+                                                        className="p-2.5 rounded-full text-slate-500 dark:text-slate-400 hover:text-blue-600 dark:hover:text-blue-400 transition-all hover:bg-blue-500/10 dark:hover:bg-blue-400/10"
+                                                    >
+                                                        <ExternalLink size={20} />
+                                                    </Link>
+                                                </motion.div>
+                                            )}
                                         </div>
                                     </div>
 
@@ -115,9 +123,9 @@ export default function Projects() {
                                     </h3>
 
                                     <motion.span
-                                        className={`inline-block px-4 py-1.5 rounded-full text-xs font-bold mb-4 border border-white/20 ${project.status === 'In Progress'
-                                            ? 'bg-gradient-to-r from-amber-500 to-orange-600 text-white shadow-lg shadow-orange-500/40'
-                                            : 'bg-gradient-to-r from-emerald-500 to-teal-600 text-white shadow-lg shadow-emerald-500/40'
+                                        className={`inline-block px-4 py-1.5 rounded-full text-xs font-bold mb-4 border border-white/20 ${project.status === 'Open Source'
+                                            ? 'bg-gradient-to-r from-emerald-500 to-teal-600 text-white shadow-lg shadow-emerald-500/40'
+                                            : 'bg-gradient-to-r from-yellow-500 to-amber-500 text-white shadow-lg shadow-yellow-500/40'
                                             }`}
                                         whileHover={{ scale: 1.05 }}
                                     >
