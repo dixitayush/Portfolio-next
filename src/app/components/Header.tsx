@@ -48,11 +48,11 @@ export default function Header() {
                         href="#"
                         className="text-2xl font-bold bg-gradient-to-r from-blue-600 via-sky-600 to-cyan-600 dark:from-blue-400 dark:via-sky-400 dark:to-cyan-400 bg-clip-text text-transparent hover:scale-105 transition-transform"
                     >
-                        Ayush.dev
+                        ayushdixit.work
                     </Link>
 
                     {/* Desktop Navigation */}
-                    <nav className="hidden md:flex items-center gap-2">
+                    <nav className="hidden lg:flex items-center gap-2">
                         {navLinks.map((link) => (
                             <Link
                                 key={link.name}
@@ -90,7 +90,7 @@ export default function Header() {
                     </nav>
 
                     {/* Mobile Menu Button */}
-                    <div className="md:hidden flex items-center gap-3">
+                    <div className="lg:hidden flex items-center gap-3">
                         {mounted && (
                             <motion.button
                                 whileTap={{ scale: 0.95 }}
@@ -120,7 +120,7 @@ export default function Header() {
                         animate={{ opacity: 1, height: 'auto' }}
                         exit={{ opacity: 0, height: 0 }}
                         transition={{ duration: 0.3 }}
-                        className="md:hidden mt-4 mx-6"
+                        className="lg:hidden mt-4 mx-6"
                     >
                         <div className="glass-strong rounded-2xl p-6 shadow-2xl space-y-3 border border-blue-200/30 dark:border-blue-500/20">
                             {navLinks.map((link, index) => (

@@ -77,17 +77,29 @@ export const portfolioData = {
 
     projects: [
         {
-            name: "AI-School: Integrated Modern AI",
-            status: "In Progress",
-            description: "A comprehensive school management system built with modern AI and microservices to enhance educational administration and analytics.",
+            name: "MCP-Powered REST/GraphQL API Generator",
+            status: "Open Source",
+            github: "https://github.com/dixitayush/mcp-api.git",
+            demo: null,
+            description: "Built an intelligent MCP Server that auto-generates production-ready REST and GraphQL CRUD APIs from Mermaid ER diagrams.",
             details: [
-                "Built using microservices architecture with Spring Boot, Spring Security, Spring Data JPA",
-                "Frontend developed using Next.js and Tailwind CSS",
-                "OpenAI API integration for generating reports, analytics, and chatbot interactions",
-                "Interactive dashboards with real-time analytics",
-                "Role-based modules for Students, Teachers, Admins, and Parents",
-                "Secure JWT-based authentication",
-                "Aims to streamline admin tasks and offer intelligent insights"
+                "Built an intelligent MCP Server that auto-generates production-ready REST and GraphQL CRUD APIs from Mermaid ER diagrams",
+                "Developed using Node.js, TypeScript, PostgreSQL, and Model Context Protocol (MCP) for seamless AI-agent integration",
+                "Implements automatic schema validation, DDL generation, database synchronization, and API server deployment with zero manual coding",
+                "Features real-time ER diagram parsing, entity relationship mapping, and dynamic REST/GraphQL endpoint generation"
+            ]
+        },
+        {
+            name: "AI-School: Intelligent School Management System (SaaS)",
+            status: "Live",
+            github: "https://github.com/dixitayush/mAI-school",
+            demo: "https://mai-school.netlify.app/login",
+            description: "Full-stack SaaS platform using Spring Boot, Node.js, GraphQL, PostgreSQL, and Next.js 14 with TypeScript.",
+            details: [
+                "Full-stack SaaS platform using Spring Boot, Node.js, GraphQL, PostgreSQL, and Next.js 14 with TypeScript",
+                "Integrated Generative AI using OpenAI API and MCP Server for student performance analysis and automated report generation",
+                "Deployed Agentic AI workflows to autonomously analyze data and generate personalized learning recommendations",
+                "Secured with Spring Security OAuth 2.0/JWT and deployed on AWS using EC2, S3, RDS with Docker and CI/CD pipeline"
             ]
         }
     ],
