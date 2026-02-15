@@ -35,7 +35,7 @@ async function fetchGitHubRepos(): Promise<GitHubRepo[]> {
     try {
         const res = await fetch(
             'https://api.github.com/users/dixitayush/repos?per_page=100&sort=pushed',
-            { next: { revalidate: 3600 } } // ISR: revalidate every hour
+            { cache: 'no-store' } // Fresh data on every request
         );
         if (!res.ok) return [];
         const repos: GitHubRepo[] = await res.json();
