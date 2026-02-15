@@ -1,3 +1,45 @@
+// Skill icon mapping for devicon CDN
+export const skillIconMap: Record<string, string> = {
+    // Languages
+    "Java": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/java/java-original.svg",
+    "JavaScript": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/javascript/javascript-original.svg",
+    "TypeScript": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/typescript/typescript-original.svg",
+    "SQL": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/azuresqldatabase/azuresqldatabase-original.svg",
+    "HTML": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/html5/html5-original.svg",
+    "CSS": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/css3/css3-original.svg",
+
+    // Frameworks & Tools
+    "Spring Boot": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/spring/spring-original.svg",
+    "Spring Security": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/spring/spring-original.svg",
+    "Spring Data JPA": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/spring/spring-original.svg",
+    "Microservices": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/kubernetes/kubernetes-original.svg",
+    "React": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/react/react-original.svg",
+    "Next.js": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/nextjs/nextjs-original.svg",
+    "Tailwind CSS": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/tailwindcss/tailwindcss-original.svg",
+    "Docker": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/docker/docker-original.svg",
+    "Kubernetes": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/kubernetes/kubernetes-original.svg",
+    "Jenkins": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/jenkins/jenkins-original.svg",
+    "Redis": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/redis/redis-original.svg",
+    "MongoDB": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/mongodb/mongodb-original.svg",
+    "PostgreSQL": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/postgresql/postgresql-original.svg",
+    "Oracle": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/oracle/oracle-original.svg",
+    "Node.js": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/nodejs/nodejs-original.svg",
+
+    // Other
+    "Git": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/git/git-original.svg",
+    "Bitbucket": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/bitbucket/bitbucket-original.svg",
+    "JIRA": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/jira/jira-original.svg",
+    "Agile": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/confluence/confluence-original.svg",
+    "Maven": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/maven/maven-original.svg",
+    "Gradle": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/gradle/gradle-original.svg",
+    "JUnit": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/junit/junit-original.svg",
+    "Mockito": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/java/java-original.svg",
+    "OpenAI API": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/openal/openal-original.svg",
+    "CI/CD": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/githubactions/githubactions-original.svg",
+    "GraphQL": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/graphql/graphql-plain.svg",
+    "AWS": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/amazonwebservices/amazonwebservices-original-wordmark.svg",
+};
+
 export const portfolioData = {
     name: "Ayush Kumar",
     location: "Noida, Uttar Pradesh, India",
@@ -29,7 +71,7 @@ export const portfolioData = {
             start_date: "Apr 2025",
             end_date: "Present",
             responsibilities: [
-                "Developing cloud-native microservices for HCL’s commerce platform using Java, Spring Boot, and Redis",
+                "Developing cloud-native microservices for HCL's commerce platform using Java, Spring Boot, and Redis",
                 "Designing scalable REST APIs using Spring MVC and Spring Data JPA",
                 "Containerizing microservices with Docker and deploying on Kubernetes",
                 "Creating responsive frontend components in React and integrating with backend REST APIs",
@@ -87,7 +129,8 @@ export const portfolioData = {
                 "Developed using Node.js, TypeScript, PostgreSQL, and Model Context Protocol (MCP) for seamless AI-agent integration",
                 "Implements automatic schema validation, DDL generation, database synchronization, and API server deployment with zero manual coding",
                 "Features real-time ER diagram parsing, entity relationship mapping, and dynamic REST/GraphQL endpoint generation"
-            ]
+            ],
+            techStack: ["Node.js", "TypeScript", "PostgreSQL", "GraphQL"]
         },
         {
             name: "AI-School: Intelligent School Management System (SaaS)",
@@ -100,7 +143,8 @@ export const portfolioData = {
                 "Integrated Generative AI using OpenAI API and MCP Server for student performance analysis and automated report generation",
                 "Deployed Agentic AI workflows to autonomously analyze data and generate personalized learning recommendations",
                 "Secured with Spring Security OAuth 2.0/JWT and deployed on AWS using EC2, S3, RDS with Docker and CI/CD pipeline"
-            ]
+            ],
+            techStack: ["Spring Boot", "Next.js", "GraphQL", "PostgreSQL", "Docker", "AWS"]
         }
     ],
 
@@ -133,10 +177,8 @@ export const portfolioData = {
             "Mockito",
             "OpenAI API",
             "CI/CD",
-            "WebLogic Server",
-            "SOAP",
-            "JMS",
-            "EJB"
+            "GraphQL",
+            "Node.js"
         ]
     },
 

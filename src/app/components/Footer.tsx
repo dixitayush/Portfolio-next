@@ -2,7 +2,7 @@
 
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Github, Linkedin, Mail, Heart, Sparkles } from 'lucide-react';
+import { Github, Linkedin, Mail, Heart, ArrowRight } from 'lucide-react';
 import { portfolioData } from '../data/portfolio';
 import Link from 'next/link';
 
@@ -10,128 +10,71 @@ export default function Footer() {
     const currentYear = new Date().getFullYear();
 
     return (
-        <footer className="relative overflow-hidden bg-slate-900 dark:bg-black text-white py-16 border-t border-slate-800/50 dark:border-slate-900">
-            {/* Background Effects */}
-            <div className="absolute inset-0 gradient-mesh opacity-10 -z-10" />
-            <motion.div
-                className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-1 bg-gradient-to-r from-transparent via-blue-500 to-transparent"
-                initial={{ scaleX: 0 }}
-                whileInView={{ scaleX: 1 }}
-                viewport={{ once: true }}
-                transition={{ duration: 1.5, ease: "easeOut" }}
-            />
-
-            <div className="container mx-auto px-6 relative z-10">
-                <div className="flex flex-col items-center">
-                    {/* Main Content */}
+        <footer className="relative overflow-hidden bg-white dark:bg-black border-t border-slate-200 dark:border-white/[0.06]">
+            {/* CTA Section */}
+            <div className="py-24">
+                <div className="container mx-auto px-6">
                     <motion.div
                         initial={{ opacity: 0, y: 20 }}
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
                         transition={{ duration: 0.6 }}
-                        className="text-center mb-12"
+                        className="text-center"
                     >
-                        <motion.h2
-                            className="text-3xl font-bold mb-3 text-gradient"
-                            whileHover={{ scale: 1.05 }}
+                        <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-slate-900 dark:text-white mb-6 leading-tight">
+                            Let&apos;s Build Something
+                            <br />
+                            <span className="text-gradient">Great Together</span>
+                        </h2>
+                        <p className="text-slate-500 dark:text-slate-400 text-lg mb-10 max-w-xl mx-auto">
+                            I&apos;m always open to new opportunities and exciting projects. Let&apos;s connect and create something amazing.
+                        </p>
+                        <Link
+                            href={`mailto:${portfolioData.email}`}
+                            className="inline-flex items-center gap-2 px-8 py-4 bg-gradient-to-r from-emerald-600 via-emerald-500 to-teal-500 dark:from-emerald-500 dark:via-cyan-500 dark:to-blue-500 text-white rounded-full font-bold shadow-xl hover:shadow-2xl hover:shadow-emerald-500/30 transition-all transform hover:-translate-y-1 hover:scale-105 btn-shine"
                         >
-                            Ayush Kumar
-                        </motion.h2>
-                        <p className="text-slate-400 text-lg mb-2">Senior Software Engineer</p>
-                        <div className="flex items-center justify-center gap-2 text-sm text-slate-500">
-                            <span>Building digital experiences</span>
-                            <Sparkles size={14} className="text-blue-400" />
-                        </div>
-                    </motion.div>
-
-                    {/* Social Links */}
-                    <motion.div
-                        initial={{ opacity: 0, y: 20 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        viewport={{ once: true }}
-                        transition={{ duration: 0.6, delay: 0.2 }}
-                        className="flex gap-6 mb-12"
-                    >
-                        <motion.div whileHover={{ scale: 1.2, rotate: 5 }} whileTap={{ scale: 0.9 }}>
-                            <Link
-                                href={portfolioData.linkedin}
-                                target="_blank"
-                                className="group relative p-3 rounded-full text-slate-400 hover:text-blue-400 transition-all hover:bg-white/5 dark:hover:bg-white/10"
-                            >
-                                <Linkedin size={24} className="relative z-10" />
-                            </Link>
-                        </motion.div>
-                        <motion.div whileHover={{ scale: 1.2, rotate: -5 }} whileTap={{ scale: 0.9 }}>
-                            <Link
-                                href={portfolioData.github}
-                                target="_blank"
-                                className="group relative p-3 rounded-full text-slate-400 hover:text-blue-400 transition-all hover:bg-white/5 dark:hover:bg-white/10"
-                            >
-                                <Github size={24} className="relative z-10" />
-                            </Link>
-                        </motion.div>
-                        <motion.div whileHover={{ scale: 1.2, rotate: 5 }} whileTap={{ scale: 0.9 }}>
-                            <Link
-                                href={`mailto:${portfolioData.email}`}
-                                className="group relative p-3 rounded-full text-slate-400 hover:text-blue-400 transition-all hover:bg-white/5 dark:hover:bg-white/10"
-                            >
-                                <Mail size={24} className="relative z-10" />
-                            </Link>
-                        </motion.div>
-                    </motion.div>
-
-                    {/* Divider */}
-                    <div className="w-full max-w-md h-px bg-gradient-to-r from-transparent via-slate-700 to-transparent mb-8" />
-
-                    {/* Copyright */}
-                    <motion.div
-                        initial={{ opacity: 0 }}
-                        whileInView={{ opacity: 1 }}
-                        viewport={{ once: true }}
-                        transition={{ duration: 0.6, delay: 0.4 }}
-                        className="text-center text-slate-500 text-sm space-y-2"
-                    >
-                        <p className="flex items-center justify-center gap-2 flex-wrap">
-                            <span>© {currentYear} Ayush Kumar.</span>
-                            <span className="hidden sm:inline">•</span>
-                            <span className="flex items-center gap-1.5">
-                                Crafted with
-                                <motion.span
-                                    animate={{
-                                        scale: [1, 1.3, 1],
-                                    }}
-                                    transition={{
-                                        duration: 1.5,
-                                        repeat: Infinity,
-                                        ease: "easeInOut",
-                                    }}
-                                >
-                                    <Heart size={14} className="text-red-500 fill-red-500" />
-                                </motion.span>
-                                and
-                                <motion.span
-                                    animate={{
-                                        rotate: [0, 360],
-                                    }}
-                                    transition={{
-                                        duration: 3,
-                                        repeat: Infinity,
-                                        ease: "linear",
-                                    }}
-                                >
-                                    <Sparkles size={14} className="text-blue-400" />
-                                </motion.span>
-                            </span>
-                        </p>
-                        <p className="text-xs">
-                            Designed with Apple-inspired liquid flow aesthetics
-                        </p>
+                            <span className="relative z-10">Contact Me</span>
+                            <ArrowRight size={20} className="relative z-10" />
+                        </Link>
                     </motion.div>
                 </div>
             </div>
 
-            {/* Bottom Gradient Line */}
-            <div className="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-blue-500 via-sky-500 to-cyan-500 opacity-50" />
+            {/* Footer Bottom */}
+            <div className="border-t border-slate-200 dark:border-white/[0.06] py-8">
+                <div className="container mx-auto px-6">
+                    <div className="flex flex-col md:flex-row items-center justify-between gap-6">
+                        {/* Copyright */}
+                        <p className="text-slate-500 dark:text-slate-500 text-sm flex items-center gap-1.5">
+                            © {currentYear} Ayush Dixit
+                        </p>
+
+                        {/* Social Links */}
+                        <div className="flex gap-4">
+                            <Link
+                                href={portfolioData.linkedin}
+                                target="_blank"
+                                className="p-2.5 rounded-full text-slate-400 hover:text-emerald-500 transition-all hover:bg-emerald-500/10"
+                            >
+                                <Linkedin size={20} />
+                            </Link>
+                            <Link
+                                href={portfolioData.github}
+                                target="_blank"
+                                className="p-2.5 rounded-full text-slate-400 hover:text-emerald-500 transition-all hover:bg-emerald-500/10"
+                            >
+                                <Github size={20} />
+                            </Link>
+                            <Link
+                                href={`mailto:${portfolioData.email}`}
+                                className="p-2.5 rounded-full text-slate-400 hover:text-emerald-500 transition-all hover:bg-emerald-500/10"
+                            >
+                                <Mail size={20} />
+                            </Link>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </footer>
     );
 }
