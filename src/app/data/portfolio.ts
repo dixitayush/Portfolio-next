@@ -136,7 +136,7 @@ export const portfolioData = {
             name: "AI-School: Intelligent School Management System (SaaS)",
             status: "Live",
             github: "https://github.com/dixitayush/mAI-school",
-            demo: "https://mai-school.netlify.app/login",
+            demo: "https://mai-school.netlify.app",
             description: "Full-stack SaaS platform using Spring Boot, Node.js, GraphQL, PostgreSQL, and Next.js 14 with TypeScript.",
             details: [
                 "Full-stack SaaS platform using Spring Boot, Node.js, GraphQL, PostgreSQL, and Next.js 14 with TypeScript",
