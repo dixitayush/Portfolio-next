@@ -1,195 +1,193 @@
 "use client";
 
-import React from 'react';
-import { motion } from 'framer-motion';
-import { Github, Linkedin, Mail, MapPin, Download, ChevronDown } from 'lucide-react';
+import React, { useEffect, useState } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
+import { Github, Linkedin, Mail, MapPin, Download, ArrowDown, ArrowRight } from 'lucide-react';
 import { portfolioData } from '../data/portfolio';
 import Link from 'next/link';
 import Image from 'next/image';
 
 export default function Hero() {
-    const badges = ["Java Full Stack Developer", "Spring Boot", "Microservices", "React & Next.js"];
+    const [roleIdx, setRoleIdx] = useState(0);
+
+    useEffect(() => {
+        const t = setInterval(() => {
+            setRoleIdx((i) => (i + 1) % portfolioData.roles.length);
+        }, 2400);
+        return () => clearInterval(t);
+    }, []);
 
     return (
-        <section id="about" className="relative min-h-screen flex items-center pt-20 pb-20 overflow-hidden">
-            {/* Pure dark background */}
-            <div className="absolute inset-0 bg-white dark:bg-black -z-10" />
-
-            {/* Dot grid pattern */}
-            <div className="absolute inset-0 dot-grid -z-10" />
-
-            {/* Gradient mesh */}
-            <div className="absolute inset-0 gradient-mesh animate-mesh -z-10 opacity-40" />
-
-            {/* Ambient glow blobs */}
-            <motion.div
-                className="absolute top-0 right-0 w-[600px] h-[600px] bg-gradient-to-br from-emerald-500/8 via-emerald-400/5 to-teal-500/8 dark:from-emerald-500/15 dark:via-cyan-500/10 dark:to-blue-500/15 rounded-full blur-3xl animate-blob"
-                style={{ filter: 'blur(100px)' }}
-            />
-            <motion.div
-                className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-gradient-to-tr from-emerald-500/5 via-teal-500/5 to-emerald-400/5 dark:from-emerald-500/10 dark:via-cyan-500/10 dark:to-blue-500/10 rounded-full blur-3xl animate-blob"
-                style={{ filter: 'blur(100px)', animationDelay: '2s' }}
-            />
+        <section id="about" className="relative min-h-screen flex items-center pt-28 pb-24 overflow-hidden">
+            {/* Backgrounds */}
+            <div className="absolute inset-0 bg-white dark:bg-black -z-20" />
+            <div className="absolute inset-0 bg-grid -z-10" />
+            <div className="absolute inset-0 gradient-mesh animate-mesh -z-10 opacity-50" />
+            <div className="absolute top-[-12%] right-[-6%] w-[560px] h-[560px] rounded-full blur-3xl -z-10 bg-gradient-to-br from-emerald-500/12 via-cyan-500/10 to-blue-500/10 animate-aurora" />
+            <div className="absolute bottom-[-18%] left-[-12%] w-[480px] h-[480px] rounded-full blur-3xl -z-10 bg-gradient-to-tr from-emerald-500/10 via-teal-500/10 to-cyan-500/10 animate-aurora" style={{ animationDelay: '5s' }} />
 
             <div className="container mx-auto px-6 relative z-10">
-                <div className="flex flex-col lg:flex-row items-center justify-between gap-12 lg:gap-20">
-                    {/* Profile Image */}
-                    <motion.div
-                        initial={{ opacity: 0, scale: 0.8 }}
-                        animate={{ opacity: 1, scale: 1 }}
-                        transition={{
-                            duration: 0.8,
-                            ease: [0.16, 1, 0.3, 1]
-                        }}
-                        className="flex-1 relative max-w-sm lg:max-w-md w-full group"
-                    >
-                        {/* Outer Glow Ring */}
-                        <div className="absolute -inset-8 bg-gradient-to-r from-emerald-500 via-emerald-400 to-teal-500 dark:from-emerald-500 dark:via-cyan-500 dark:to-blue-500 rounded-full blur-2xl opacity-20 group-hover:opacity-40 transition-opacity duration-500" />
-
-                        {/* Rotating Gradient Border */}
-                        <div className="absolute -inset-2 bg-gradient-to-r from-emerald-500 via-teal-500 to-emerald-600 dark:from-emerald-500 dark:via-cyan-500 dark:to-blue-500 rounded-full animate-border-flow opacity-60"
-                            style={{ backgroundSize: '200% 200%' }}
-                        />
-
-                        {/* Glass Frame */}
-                        <div className="relative aspect-square rounded-full overflow-hidden glass-strong shadow-2xl">
-                            <div className="absolute inset-0 bg-gradient-to-br from-emerald-500/10 via-teal-500/10 to-emerald-400/10 dark:from-emerald-500/10 dark:via-cyan-500/10 dark:to-blue-500/10" />
-                            <Image
-                                src="/profile.png"
-                                alt={portfolioData.name}
-                                fill
-                                className="object-cover relative z-10"
-                                priority
-                            />
-                            {/* Shimmer Effect on Hover */}
-                            <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 animate-shimmer" />
-                        </div>
-                    </motion.div>
-
+                <div className="grid lg:grid-cols-[1.1fr_0.9fr] items-center gap-12 lg:gap-8">
                     {/* Content */}
-                    <div className="flex-1 text-center lg:text-left">
-                        {/* Floating badges */}
+                    <div className="text-center lg:text-left order-2 lg:order-1">
+                        {/* Availability pill */}
                         <motion.div
-                            initial={{ opacity: 0, y: 20 }}
+                            initial={{ opacity: 0, y: 16 }}
                             animate={{ opacity: 1, y: 0 }}
-                            transition={{ duration: 0.6, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
-                            className="flex flex-wrap gap-2 mb-6 justify-center lg:justify-start"
+                            transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+                            className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full text-xs font-medium bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 border border-emerald-500/20 mb-6"
                         >
-                            {badges.map((badge, i) => (
-                                <motion.span
-                                    key={i}
-                                    initial={{ opacity: 0, scale: 0.8 }}
-                                    animate={{ opacity: 1, scale: 1 }}
-                                    transition={{ delay: 0.3 + i * 0.1 }}
-                                    className="px-3 py-1.5 rounded-full text-xs font-medium bg-slate-100 dark:bg-white/5 text-slate-600 dark:text-slate-400 border border-slate-200 dark:border-white/10"
-                                >
-                                    {badge}
-                                </motion.span>
-                            ))}
+                            <span className="relative flex h-2 w-2">
+                                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75" />
+                                <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500" />
+                            </span>
+                            Available for new opportunities
                         </motion.div>
 
+                        {/* SEO-rich H1 */}
                         <motion.h1
-                            initial={{ opacity: 0, y: 20 }}
+                            initial={{ opacity: 0, y: 18 }}
                             animate={{ opacity: 1, y: 0 }}
-                            transition={{
-                                duration: 0.6,
-                                delay: 0.3,
-                                ease: [0.16, 1, 0.3, 1]
-                            }}
-                            className="text-5xl md:text-7xl font-bold text-slate-900 dark:text-white leading-tight mb-4"
+                            transition={{ duration: 0.6, delay: 0.08, ease: [0.16, 1, 0.3, 1] }}
+                            className="font-bold tracking-tight mb-5"
                         >
-                            Building Modern
-                            <br />
-                            <span className="text-gradient">
-                                Web Experiences
+                            <span className="block text-base md:text-lg font-medium text-slate-400 dark:text-slate-500 mb-1">
+                                Hi, I&apos;m
+                            </span>
+                            <span className="block text-5xl md:text-6xl xl:text-7xl text-slate-900 dark:text-white leading-[1.02]">
+                                Ayush Dixit<span className="text-emerald-500">.</span>
+                            </span>
+                            <span className="block text-2xl md:text-3xl xl:text-[2.6rem] mt-3 leading-tight text-gradient-animated">
+                                {portfolioData.headline}
                             </span>
                         </motion.h1>
 
-                        <motion.p
-                            initial={{ opacity: 0, y: 20 }}
+                        {/* Role rotator (terminal style) */}
+                        <motion.div
+                            initial={{ opacity: 0, y: 16 }}
                             animate={{ opacity: 1, y: 0 }}
-                            transition={{
-                                duration: 0.6,
-                                delay: 0.4,
-                                ease: [0.16, 1, 0.3, 1]
-                            }}
-                            className="text-lg md:text-xl text-slate-500 dark:text-slate-400 mb-8 max-w-2xl leading-relaxed mx-auto lg:mx-0"
+                            transition={{ duration: 0.6, delay: 0.18 }}
+                            className="h-7 mb-6 flex flex-nowrap items-center justify-center lg:justify-start gap-2 mono text-sm md:text-[15px] whitespace-nowrap"
+                        >
+                            <span className="text-emerald-500">$</span>
+                            <span className="hidden sm:inline text-slate-400 dark:text-slate-500">whoami</span>
+                            <span className="hidden sm:inline text-slate-300 dark:text-slate-600">—</span>
+                            <span className="relative inline-block min-w-[15rem] sm:min-w-[16rem] text-left h-7 align-bottom">
+                                <AnimatePresence mode="wait">
+                                    <motion.span
+                                        key={roleIdx}
+                                        initial={{ opacity: 0, y: 8 }}
+                                        animate={{ opacity: 1, y: 0 }}
+                                        exit={{ opacity: 0, y: -8 }}
+                                        transition={{ duration: 0.3 }}
+                                        className="absolute left-0 top-0.5 whitespace-nowrap text-slate-700 dark:text-slate-200 font-medium"
+                                    >
+                                        {portfolioData.roles[roleIdx]}
+                                        <span className="inline-block w-2 h-4 -mb-0.5 ml-0.5 bg-emerald-500 animate-pulse" />
+                                    </motion.span>
+                                </AnimatePresence>
+                            </span>
+                        </motion.div>
+
+                        <motion.p
+                            initial={{ opacity: 0, y: 16 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            transition={{ duration: 0.6, delay: 0.26 }}
+                            className="text-base md:text-lg text-slate-500 dark:text-slate-400 mb-8 max-w-xl leading-relaxed mx-auto lg:mx-0"
                         >
                             {portfolioData.summary}
                         </motion.p>
 
+                        {/* CTAs */}
                         <motion.div
-                            initial={{ opacity: 0, y: 20 }}
+                            initial={{ opacity: 0, y: 16 }}
                             animate={{ opacity: 1, y: 0 }}
-                            transition={{
-                                duration: 0.6,
-                                delay: 0.5,
-                                ease: [0.16, 1, 0.3, 1]
-                            }}
-                            className="flex flex-wrap gap-4 items-center justify-center lg:justify-start mb-10"
-                        >
-                            <Link
-                                href={portfolioData.linkedin}
-                                target="_blank"
-                                className="p-3 rounded-full text-slate-500 dark:text-slate-400 hover:text-emerald-600 dark:hover:text-emerald-400 transition-all hover:bg-emerald-500/10"
-                            >
-                                <Linkedin size={22} />
-                            </Link>
-                            <Link
-                                href={portfolioData.github}
-                                target="_blank"
-                                className="p-3 rounded-full text-slate-500 dark:text-slate-400 hover:text-emerald-600 dark:hover:text-emerald-400 transition-all hover:bg-emerald-500/10"
-                            >
-                                <Github size={22} />
-                            </Link>
-                            <Link
-                                href={`mailto:${portfolioData.email}`}
-                                className="p-3 rounded-full text-slate-500 dark:text-slate-400 hover:text-emerald-600 dark:hover:text-emerald-400 transition-all hover:bg-emerald-500/10"
-                            >
-                                <Mail size={22} />
-                            </Link>
-
-                            <div className="flex items-center gap-2 px-3 py-2 rounded-full text-slate-500 dark:text-slate-400 text-sm">
-                                <MapPin size={16} className="text-emerald-500" />
-                                <span className="font-medium">{portfolioData.location}</span>
-                            </div>
-                        </motion.div>
-
-                        <motion.div
-                            initial={{ opacity: 0, y: 20 }}
-                            animate={{ opacity: 1, y: 0 }}
-                            transition={{
-                                duration: 0.6,
-                                delay: 0.6,
-                                ease: [0.16, 1, 0.3, 1]
-                            }}
-                            className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start"
+                            transition={{ duration: 0.6, delay: 0.34 }}
+                            className="flex flex-wrap gap-3 justify-center lg:justify-start mb-9"
                         >
                             <Link
                                 href="#projects"
-                                className="group px-8 py-4 bg-gradient-to-r from-emerald-600 via-emerald-500 to-teal-500 dark:from-emerald-500 dark:via-cyan-500 dark:to-blue-500 text-white rounded-full font-bold shadow-xl hover:shadow-2xl hover:shadow-emerald-500/30 transition-all transform hover:-translate-y-1 hover:scale-105 w-full sm:w-auto text-center btn-shine"
+                                className="group inline-flex items-center gap-2 px-6 py-3.5 bg-gradient-to-r from-emerald-600 via-emerald-500 to-teal-500 dark:from-emerald-500 dark:via-cyan-500 dark:to-blue-500 text-white rounded-full font-semibold shadow-lg hover:shadow-emerald-500/30 transition-all hover:-translate-y-0.5 btn-shine"
                             >
-                                <span className="relative z-10">View Projects</span>
+                                <span className="relative z-10">View My Work</span>
+                                <ArrowRight size={17} className="relative z-10 group-hover:translate-x-0.5 transition-transform" />
                             </Link>
                             <Link
                                 href={portfolioData.resume}
                                 target="_blank"
-                                className="px-8 py-4 bg-white/5 border border-white/10 dark:border-white/10 text-slate-700 dark:text-slate-300 rounded-full font-bold hover:scale-105 transition-all shadow-lg hover:shadow-xl flex items-center justify-center gap-2 transform hover:-translate-y-1 w-full sm:w-auto btn-shine hover:bg-white/10"
+                                className="inline-flex items-center gap-2 px-6 py-3.5 rounded-full font-semibold border border-slate-200 dark:border-white/10 text-slate-700 dark:text-slate-200 hover:border-emerald-500/40 hover:bg-emerald-500/5 transition-all hover:-translate-y-0.5"
                             >
-                                <Download size={20} />
-                                View Resume
+                                <Download size={18} />
+                                Résumé
                             </Link>
                         </motion.div>
+
+                        {/* Socials + location */}
+                        <motion.div
+                            initial={{ opacity: 0, y: 16 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            transition={{ duration: 0.6, delay: 0.42 }}
+                            className="flex items-center gap-1 justify-center lg:justify-start flex-wrap"
+                        >
+                            {[
+                                { icon: <Github size={19} />, href: portfolioData.github, label: "GitHub" },
+                                { icon: <Linkedin size={19} />, href: portfolioData.linkedin, label: "LinkedIn" },
+                                { icon: <Mail size={19} />, href: `mailto:${portfolioData.email}`, label: "Email" },
+                            ].map((s) => (
+                                <Link
+                                    key={s.label}
+                                    href={s.href}
+                                    aria-label={s.label}
+                                    target={s.href.startsWith('mailto') ? undefined : '_blank'}
+                                    className="p-2.5 rounded-full text-slate-500 dark:text-slate-400 hover:text-emerald-500 hover:bg-emerald-500/10 transition-all"
+                                >
+                                    {s.icon}
+                                </Link>
+                            ))}
+                            <span className="mx-2 h-5 w-px bg-slate-200 dark:bg-white/10" />
+                            <span className="inline-flex items-center gap-1.5 text-sm text-slate-500 dark:text-slate-400">
+                                <MapPin size={15} className="text-emerald-500" />
+                                {portfolioData.location.split(',')[0]}, India
+                            </span>
+                        </motion.div>
                     </div>
+
+                    {/* Visual */}
+                    <motion.div
+                        initial={{ opacity: 0, scale: 0.9 }}
+                        animate={{ opacity: 1, scale: 1 }}
+                        transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+                        className="relative order-1 lg:order-2 flex justify-center"
+                    >
+                        <div className="relative w-[290px] sm:w-[350px] aspect-square group">
+                            {/* Soft ambient glow */}
+                            <div className="absolute -inset-4 rounded-full bg-gradient-to-br from-emerald-500/25 via-cyan-500/15 to-blue-500/25 blur-3xl opacity-50 group-hover:opacity-70 transition-opacity duration-700" />
+
+                            {/* Clean gradient ring + avatar */}
+                            <div className="absolute inset-0 rounded-full p-[5px] bg-gradient-to-br from-emerald-400 via-cyan-500 to-blue-500 shadow-2xl">
+                                <div className="relative w-full h-full rounded-full overflow-hidden bg-white dark:bg-black ring-1 ring-black/5 dark:ring-white/10">
+                                    <Image
+                                        src="/profile.png"
+                                        alt="Ayush Dixit — Senior Software Engineer, Full Stack, MERN and Java Developer"
+                                        fill
+                                        className="object-cover"
+                                        priority
+                                        sizes="350px"
+                                    />
+                                </div>
+                            </div>
+                        </div>
+                    </motion.div>
                 </div>
 
-                {/* Scroll indicator */}
+                {/* Scroll cue */}
                 <motion.div
-                    className="absolute bottom-8 left-1/2 -translate-x-1/2"
+                    className="hidden md:flex absolute bottom-4 left-1/2 -translate-x-1/2 flex-col items-center gap-1.5 text-slate-400 dark:text-slate-600"
                     animate={{ y: [0, 8, 0] }}
-                    transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
+                    transition={{ duration: 2, repeat: Infinity, ease: 'easeInOut' }}
                 >
-                    <ChevronDown size={24} className="text-slate-400 dark:text-slate-600" />
+                    <span className="mono text-[10px] uppercase tracking-widest">Scroll</span>
+                    <ArrowDown size={18} />
                 </motion.div>
             </div>
         </section>
