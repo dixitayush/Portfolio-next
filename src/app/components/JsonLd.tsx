@@ -1,4 +1,27 @@
+import { portfolioData } from "../data/portfolio";
+
 export default function JsonLd() {
+    const projectsSchema = {
+        '@context': 'https://schema.org',
+        '@type': 'ItemList',
+        name: 'Projects by Ayush Dixit',
+        itemListElement: portfolioData.projects.map((p, i) => ({
+            '@type': 'ListItem',
+            position: i + 1,
+            item: {
+                '@type': 'SoftwareSourceCode',
+                name: p.name,
+                description: p.description,
+                codeRepository: p.github ?? undefined,
+                url: p.demo ?? p.github ?? undefined,
+                programmingLanguage: Object.keys(p.languages),
+                keywords: p.techStack.join(', '),
+                author: { '@type': 'Person', name: 'Ayush Dixit' },
+                dateCreated: p.year,
+            },
+        })),
+    };
+
     const personSchema = {
         '@context': 'https://schema.org',
         '@type': 'Person',
@@ -6,13 +29,19 @@ export default function JsonLd() {
         alternateName: 'Ayush Kumar',
         url: 'https://ayushdixit.work',
         image: 'https://ayushdixit.work/profile.png',
-        jobTitle: 'Senior Java Full Stack Developer',
+        jobTitle: 'Senior Software Engineer',
+        hasOccupation: [
+            { '@type': 'Occupation', name: 'Senior Software Engineer' },
+            { '@type': 'Occupation', name: 'Full Stack Developer' },
+            { '@type': 'Occupation', name: 'MERN Stack Developer' },
+            { '@type': 'Occupation', name: 'Java Full Stack Developer' },
+        ],
         worksFor: {
             '@type': 'Organization',
             name: 'HCL Software',
         },
         description:
-            'Senior Software Engineer with 4.5+ years of experience in Java, Spring Boot, Microservices, React, Next.js, and cloud-native development. Based in India.',
+            'Senior Software Engineer and Full Stack Developer with ~5 years of experience building scalable products with the MERN stack (MongoDB, Express, React, Node.js), Java, Spring Boot, Microservices, Next.js, TypeScript, and cloud-native development. Based in India.',
         address: {
             '@type': 'PostalAddress',
             addressLocality: 'Noida',
@@ -25,23 +54,28 @@ export default function JsonLd() {
             'https://linkedin.com/in/ayush-dixit-2316b4153',
         ],
         knowsAbout: [
+            'Full Stack Development',
+            'MERN Stack',
+            'MongoDB',
+            'Express.js',
+            'React',
+            'Node.js',
             'Java',
             'Spring Boot',
             'Microservices',
-            'React',
             'Next.js',
             'TypeScript',
             'JavaScript',
+            'Rust',
             'Docker',
             'Kubernetes',
             'AWS',
             'PostgreSQL',
-            'MongoDB',
             'Redis',
             'GraphQL',
             'REST API',
-            'Full Stack Development',
             'Cloud Native Development',
+            'System Design',
             'CI/CD',
             'DevOps',
         ],
@@ -85,6 +119,10 @@ export default function JsonLd() {
             <script
                 type="application/ld+json"
                 dangerouslySetInnerHTML={{ __html: JSON.stringify(profilePageSchema) }}
+            />
+            <script
+                type="application/ld+json"
+                dangerouslySetInnerHTML={{ __html: JSON.stringify(projectsSchema) }}
             />
         </>
     );

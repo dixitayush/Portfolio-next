@@ -4,32 +4,20 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { GraduationCap, Calendar, Award } from 'lucide-react';
 import { portfolioData } from '../data/portfolio';
+import SectionHeading from './ui/SectionHeading';
 
 export default function Education() {
     return (
-        <section id="education" className="py-28 relative overflow-hidden bg-slate-50/50 dark:bg-[#050505]">
+        <section id="education" className="py-28 relative overflow-hidden bg-white dark:bg-black">
             {/* Background Effects */}
             <div className="absolute inset-0 gradient-mesh opacity-10 -z-10" />
 
             <div className="container mx-auto px-6 relative z-10">
-                <motion.div
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    transition={{
-                        duration: 0.6,
-                        ease: [0.16, 1, 0.3, 1]
-                    }}
-                    className="mb-16 text-center"
-                >
-                    <p className="text-emerald-500 font-medium text-sm tracking-widest uppercase mb-3">Background</p>
-                    <h2 className="text-4xl md:text-5xl font-bold text-slate-900 dark:text-white mb-4">
-                        Education & <span className="text-gradient">Certifications</span>
-                    </h2>
-                    <p className="text-slate-500 dark:text-slate-400 text-lg max-w-2xl mx-auto">
-                        My academic background and professional certifications
-                    </p>
-                </motion.div>
+                <SectionHeading
+                    eyebrow="Background"
+                    title={<>Education & <span className="text-gradient">certifications</span></>}
+                    subtitle="My academic foundation and the certifications I've earned along the way."
+                />
 
                 {/* Education Card */}
                 <div className="max-w-4xl mx-auto space-y-6 mb-16">

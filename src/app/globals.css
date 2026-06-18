@@ -388,3 +388,132 @@
   width: 18px;
   height: 18px;
 }
+
+/* ============================================
+   NEW — MODERN UTILITIES
+   ============================================ */
+
+/* Animated grid background */
+.bg-grid {
+  background-image:
+    linear-gradient(to right, rgba(0, 0, 0, 0.04) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(0, 0, 0, 0.04) 1px, transparent 1px);
+  background-size: 56px 56px;
+  -webkit-mask-image: radial-gradient(ellipse 80% 60% at 50% 0%, #000 60%, transparent 100%);
+  mask-image: radial-gradient(ellipse 80% 60% at 50% 0%, #000 60%, transparent 100%);
+}
+
+.dark .bg-grid {
+  background-image:
+    linear-gradient(to right, rgba(255, 255, 255, 0.05) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
+}
+
+/* Aurora ambient gradient */
+@keyframes aurora {
+  0%, 100% { transform: translate3d(0, 0, 0) scale(1); }
+  33% { transform: translate3d(4%, -3%, 0) scale(1.08); }
+  66% { transform: translate3d(-3%, 4%, 0) scale(0.96); }
+}
+
+.animate-aurora {
+  animation: aurora 18s ease-in-out infinite;
+}
+
+/* Animated gradient text (shifting) */
+.text-gradient-animated {
+  background: linear-gradient(90deg, #059669, #10b981, #06b6d4, #3b82f6, #10b981);
+  background-size: 300% 100%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  animation: gradient-shift 6s linear infinite;
+}
+
+/* Marquee */
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+
+.animate-marquee {
+  animation: marquee var(--marquee-duration, 40s) linear infinite;
+}
+
+.marquee-pause:hover .animate-marquee {
+  animation-play-state: paused;
+}
+
+/* Edge fade mask for horizontal scrollers */
+.fade-x {
+  -webkit-mask-image: linear-gradient(to right, transparent, #000 8%, #000 92%, transparent);
+  mask-image: linear-gradient(to right, transparent, #000 8%, #000 92%, transparent);
+}
+
+/* Spotlight card — radial glow follows cursor (uses --mx/--my from JS) */
+.spotlight {
+  position: relative;
+}
+
+.spotlight::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  opacity: 0;
+  transition: opacity 0.35s ease;
+  background: radial-gradient(
+    420px circle at var(--mx, 50%) var(--my, 50%),
+    rgba(16, 185, 129, 0.12),
+    transparent 42%
+  );
+  pointer-events: none;
+}
+
+.dark .spotlight::before {
+  background: radial-gradient(
+    420px circle at var(--mx, 50%) var(--my, 50%),
+    rgba(16, 185, 129, 0.16),
+    transparent 42%
+  );
+}
+
+.spotlight:hover::before {
+  opacity: 1;
+}
+
+/* Soft section divider glow */
+.divider-glow {
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(16, 185, 129, 0.4), transparent);
+}
+
+/* Monospace label accent */
+.mono {
+  font-family: var(--font-mono, ui-monospace, "SFMono-Regular", Menlo, monospace);
+  font-feature-settings: "liga" 0;
+}
+
+/* Subtle entrance for command palette */
+@keyframes pop-in {
+  from { opacity: 0; transform: translateY(8px) scale(0.98); }
+  to { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+.animate-pop-in {
+  animation: pop-in 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Respect reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .animate-aurora,
+  .animate-blob,
+  .animate-mesh,
+  .animate-marquee,
+  .animate-border-flow,
+  .text-gradient-animated,
+  .btn-shine::after,
+  .animate-shimmer {
+    animation: none !important;
+  }
+}

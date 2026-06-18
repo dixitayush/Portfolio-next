@@ -1,5 +1,7 @@
 import Header from "./components/Header";
 import Hero from "./components/Hero";
+import Stats from "./components/Stats";
+import Philosophy from "./components/Philosophy";
 import Experience from "./components/Experience";
 import Projects from "./components/Projects";
 import GitHubRepos from "./components/GitHubRepos";
@@ -12,6 +14,8 @@ export default function Home() {
     <main className="min-h-screen bg-white dark:bg-black">
       <Header />
       <Hero />
+      <Stats />
+      <Philosophy />
       <Experience />
       <Projects />
       <GitHubRepos />
