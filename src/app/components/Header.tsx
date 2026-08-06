@@ -13,6 +13,8 @@ const navLinks = [
     { name: 'Projects', href: '#projects', id: 'projects' },
     { name: 'GitHub', href: '#github', id: 'github' },
     { name: 'Skills', href: '#skills', id: 'skills' },
+    { name: 'Education', href: '#education', id: 'education', mobileOnly: true },
+    { name: 'Music', href: '#music', id: 'music' },
 ];
 
 export default function Header() {
@@ -32,7 +34,7 @@ export default function Header() {
 
     // Scroll spy
     useEffect(() => {
-        const ids = ['about', 'stats', 'philosophy', 'experience', 'projects', 'github', 'skills', 'education'];
+        const ids = ['about', 'stats', 'philosophy', 'experience', 'projects', 'github', 'skills', 'education', 'music'];
         const observer = new IntersectionObserver(
             (entries) => {
                 const visible = entries
@@ -72,7 +74,7 @@ export default function Header() {
 
                     {/* Desktop Navigation */}
                     <nav className="hidden lg:flex items-center gap-1 rounded-full px-1.5 py-1.5 bg-slate-100/60 dark:bg-white/[0.04] border border-slate-200/60 dark:border-white/[0.06]">
-                        {navLinks.map((link) => (
+                        {navLinks.filter((link) => !link.mobileOnly).map((link) => (
                             <Link
                                 key={link.name}
                                 href={link.href}
@@ -153,7 +155,7 @@ export default function Header() {
                         className="lg:hidden mt-4 mx-6 overflow-hidden"
                     >
                         <div className="glass-strong rounded-2xl p-4 shadow-2xl space-y-1">
-                            {[...navLinks, { name: 'Education', href: '#education', id: 'education' }].map((link, index) => (
+                            {navLinks.map((link, index) => (
                                 <motion.div
                                     key={link.name}
                                     initial={{ opacity: 0, x: -20 }}

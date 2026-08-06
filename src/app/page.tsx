@@ -7,6 +7,7 @@ import Projects from "./components/Projects";
 import GitHubRepos from "./components/GitHubRepos";
 import Skills from "./components/Skills";
 import Education from "./components/Education";
+import Spotify from "./components/Spotify";
 import Footer from "./components/Footer";
 
 export default function Home() {
@@ -21,6 +22,7 @@ export default function Home() {
       <GitHubRepos />
       <Skills />
       <Education />
+      <Spotify />
       <Footer />
     </main>
   );

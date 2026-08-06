@@ -81,6 +81,29 @@ export interface ArchLayer {
     tone?: "frontend" | "backend" | "data" | "external" | "ai";
     nodes: ArchNode[];
 }
+export interface Track {
+    title: string;
+    artist: string;
+    album: string;
+    year: string;
+    /** Fallback runtime shown before metadata resolves */
+    duration: string;
+    /** Search term used to resolve artwork from the iTunes catalog */
+    query: string;
+    /** Official YouTube video id — used for ~2-minute in-page clips */
+    youtubeId: string;
+}
+export interface Playlist {
+    id: string;
+    name: string;
+    description: string;
+    mood: string;
+    /** Tailwind gradient used for the generated cover art */
+    gradient: string;
+    /** Real Spotify playlist link; falls back to a Spotify search when null */
+    url: string | null;
+    tracks: Track[];
+}
 export interface Project {
     slug: string;
     name: string;
@@ -611,6 +634,279 @@ export const portfolioData = {
             items: ["MCP", "OpenAI API", "Gemini API", "JUnit", "Mockito", "JIRA"],
         },
     ],
+
+    // ============================================================
+    //  Spotify — what plays while I build
+    //  Paste a real playlist link into `url` to point at your own playlist.
+    //  Clips play ~2 minutes via official YouTube embeds (Apple/Spotify free
+    //  previews are hard-capped at ~30s by the platforms).
+    // ============================================================
+    spotify: {
+        /** Public Spotify profile — the "Follow" button is hidden while this is null */
+        profile: null as string | null,
+        /** Seconds of each official video we stream in-page */
+        clipSeconds: 120,
+        playlists: <Playlist[]>[
+            {
+                id: "late-night-deploys",
+                name: "Late Night Deploys",
+                description:
+                    "The 1 AM playlist. Slow Hindi melodies for the hours when the build is green, the office is empty, and the refactor finally clicks.",
+                mood: "Soft · Melodic · Repeat-worthy",
+                gradient: "from-emerald-500 via-teal-500 to-cyan-600",
+                url: null,
+                tracks: [
+                    {
+                        title: "Tum Hi Ho",
+                        artist: "Arijit Singh",
+                        album: "Aashiqui 2",
+                        year: "2013",
+                        duration: "4:21",
+                        query: "Tum Hi Ho Arijit Singh Aashiqui 2",
+                        youtubeId: "Umqb9KENgmk",
+                    },
+                    {
+                        title: "Meri Banogi Kya",
+                        artist: "Rito Riba",
+                        album: "Single",
+                        year: "2023",
+                        duration: "3:35",
+                        query: "Meri Banogi Kya Rito Riba",
+                        youtubeId: "uoLC9u_M-E8",
+                    },
+                    {
+                        title: "Gehra Hua",
+                        artist: "Arijit Singh, Shashwat Sachdev",
+                        album: "Dhurandhar",
+                        year: "2025",
+                        duration: "6:02",
+                        query: "Gehra Hua Dhurandhar Arijit Singh",
+                        youtubeId: "GX9x62kFsVU",
+                    },
+                    {
+                        title: "Samjhawan",
+                        artist: "Arijit Singh, Shreya Ghoshal",
+                        album: "Humpty Sharma Ki Dulhania",
+                        year: "2014",
+                        duration: "4:29",
+                        query: "Main Tenu Samjhawan Ki Arijit Singh Humpty Sharma",
+                        youtubeId: "H2f7MZaw3Yo",
+                    },
+                    {
+                        title: "Ishq Bulaava",
+                        artist: "Sanam Puri, Shipra Goyal",
+                        album: "Hasee Toh Phasee",
+                        year: "2014",
+                        duration: "5:03",
+                        query: "Ishq Bulaava Hasee Toh Phasee Sanam Puri",
+                        youtubeId: "uHKZr_ui0g4",
+                    },
+                    {
+                        title: "Sunn Raha Hai",
+                        artist: "Ankit Tiwari",
+                        album: "Aashiqui 2",
+                        year: "2013",
+                        duration: "6:30",
+                        query: "Sunn Raha Hai Aashiqui 2 Ankit Tiwari",
+                        youtubeId: "z3UHfi9vpbc",
+                    },
+                    {
+                        title: "Kabira",
+                        artist: "Arijit Singh, Harshdeep Kaur",
+                        album: "Yeh Jawaani Hai Deewani",
+                        year: "2013",
+                        duration: "3:43",
+                        query: "Kabira Yeh Jawaani Hai Deewani Arijit Singh",
+                        youtubeId: "jHNNMj5bNQw",
+                    },
+                    {
+                        title: "Tera Ban Jaunga",
+                        artist: "Akhil Sachdeva, Tulsi Kumar",
+                        album: "Kabir Singh",
+                        year: "2019",
+                        duration: "3:56",
+                        query: "Tera Ban Jaunga Kabir Singh",
+                        youtubeId: "mQiiw7uRngk",
+                    },
+                ],
+            },
+            {
+                id: "on-repeat",
+                name: "On Repeat",
+                description:
+                    "Whatever has been stuck in my head this month — the tracks that survive every skip.",
+                mood: "Warm · Modern · Sing-along",
+                gradient: "from-violet-500 via-fuchsia-500 to-rose-500",
+                url: null,
+                tracks: [
+                    {
+                        title: "Kesariya",
+                        artist: "Arijit Singh",
+                        album: "Brahmastra",
+                        year: "2022",
+                        duration: "4:28",
+                        query: "Kesariya Brahmastra Arijit Singh",
+                        youtubeId: "BddP6PYo2gs",
+                    },
+                    {
+                        title: "Apna Bana Le",
+                        artist: "Arijit Singh",
+                        album: "Bhediya",
+                        year: "2022",
+                        duration: "4:21",
+                        query: "Apna Bana Le Bhediya Arijit Singh",
+                        youtubeId: "ElZfdU54Cp8",
+                    },
+                    {
+                        title: "Tere Vaaste",
+                        artist: "Varun Jain, Shadab Faridi",
+                        album: "Zara Hatke Zara Bachke",
+                        year: "2023",
+                        duration: "3:09",
+                        query: "Tere Vaaste Zara Hatke Zara Bachke",
+                        youtubeId: "X7WXHhokylc",
+                    },
+                    {
+                        title: "Raataan Lambiyan",
+                        artist: "Jubin Nautiyal, Asees Kaur",
+                        album: "Shershaah",
+                        year: "2021",
+                        duration: "3:50",
+                        query: "Raataan Lambiyan Shershaah",
+                        youtubeId: "orYf6VDtj_k",
+                    },
+                    {
+                        title: "Channa Mereya",
+                        artist: "Arijit Singh",
+                        album: "Ae Dil Hai Mushkil",
+                        year: "2016",
+                        duration: "4:49",
+                        query: "Channa Mereya Ae Dil Hai Mushkil",
+                        youtubeId: "284Ov7ysmfA",
+                    },
+                    {
+                        title: "Heeriye",
+                        artist: "Jasleen Royal, Arijit Singh",
+                        album: "Single",
+                        year: "2023",
+                        duration: "3:14",
+                        query: "Heeriye Jasleen Royal Arijit Singh",
+                        youtubeId: "RLzC55ai0eo",
+                    },
+                    {
+                        title: "Shayad",
+                        artist: "Arijit Singh",
+                        album: "Love Aaj Kal",
+                        year: "2020",
+                        duration: "4:07",
+                        query: "Shayad Love Aaj Kal Arijit Singh",
+                        youtubeId: "MJyKN-8UncM",
+                    },
+                    {
+                        title: "Zaalima",
+                        artist: "Arijit Singh, Harshdeep Kaur",
+                        album: "Raees",
+                        year: "2017",
+                        duration: "4:59",
+                        query: "Zaalima Raees Arijit Singh",
+                        youtubeId: "lpdRqn6xwiM",
+                    },
+                    {
+                        title: "O Bedardeya",
+                        artist: "Arijit Singh",
+                        album: "Tu Jhoothi Main Makkaar",
+                        year: "2023",
+                        duration: "4:48",
+                        query: "O Bedardeya Tu Jhoothi Main Makkaar Arijit",
+                        youtubeId: "npwn6KVMtFI",
+                    },
+                ],
+            },
+            {
+                id: "deep-work",
+                name: "Deep Work",
+                description:
+                    "Headphones on, notifications off. Long, steady tracks I can loop through a four-hour block without noticing.",
+                mood: "Calm · Cinematic · Flow state",
+                gradient: "from-blue-500 via-indigo-500 to-slate-700",
+                url: null,
+                tracks: [
+                    {
+                        title: "Satranga",
+                        artist: "Arijit Singh",
+                        album: "Animal",
+                        year: "2023",
+                        duration: "4:31",
+                        query: "Satranga Animal Arijit Singh",
+                        youtubeId: "HrnrqYxYrbk",
+                    },
+                    {
+                        title: "Pehle Bhi Main",
+                        artist: "Vishal Mishra",
+                        album: "Animal",
+                        year: "2023",
+                        duration: "4:10",
+                        query: "Pehle Bhi Main Animal Vishal Mishra",
+                        youtubeId: "iAIBF2ngbWY",
+                    },
+                    {
+                        title: "Agar Tum Saath Ho",
+                        artist: "Arijit Singh, Alka Yagnik",
+                        album: "Tamasha",
+                        year: "2015",
+                        duration: "5:41",
+                        query: "Agar Tum Saath Ho Tamasha Arijit Singh Alka",
+                        youtubeId: "sK7riqg2mr4",
+                    },
+                    {
+                        title: "Tum Se Hi",
+                        artist: "Mohit Chauhan",
+                        album: "Jab We Met",
+                        year: "2007",
+                        duration: "5:21",
+                        query: "Tum Se Hi Jab We Met Mohit Chauhan",
+                        youtubeId: "Cb6wuzOurPc",
+                    },
+                    {
+                        title: "Ilahi",
+                        artist: "Arijit Singh",
+                        album: "Yeh Jawaani Hai Deewani",
+                        year: "2013",
+                        duration: "3:48",
+                        query: "Ilahi Yeh Jawaani Hai Deewani Arijit Singh",
+                        youtubeId: "fdubeMFwuGs",
+                    },
+                    {
+                        title: "Bekhayali",
+                        artist: "Arijit Singh",
+                        album: "Kabir Singh",
+                        year: "2019",
+                        duration: "6:10",
+                        query: "Bekhayali Kabir Singh Arijit Singh",
+                        youtubeId: "Ps4aVpIESkc",
+                    },
+                    {
+                        title: "Khairiyat",
+                        artist: "Arijit Singh",
+                        album: "Chhichhore",
+                        year: "2019",
+                        duration: "4:40",
+                        query: "Khairiyat Chhichhore Arijit Singh",
+                        youtubeId: "hoNb6HuNmU0",
+                    },
+                    {
+                        title: "Hawayein",
+                        artist: "Arijit Singh",
+                        album: "Jab Harry Met Sejal",
+                        year: "2017",
+                        duration: "4:50",
+                        query: "Hawayein Jab Harry Met Sejal Arijit Singh",
+                        youtubeId: "cs1e0fRyI18",
+                    },
+                ],
+            },
+        ],
+    },
 
     education: [
         {

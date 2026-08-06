@@ -7,6 +7,7 @@ import { useTheme } from "next-themes";
 import {
     Search, Home, Briefcase, FolderGit2, Code2, GraduationCap, Github,
     Linkedin, Mail, FileText, Sun, Moon, Brain, BarChart3, CornerDownLeft, Copy, ExternalLink,
+    Music4, ListMusic,
 } from "lucide-react";
 import { portfolioData } from "../data/portfolio";
 
@@ -64,7 +65,18 @@ export default function CommandPalette() {
             { id: "github", label: "GitHub Repositories", group: "Navigate", icon: <Github size={16} />, action: () => go("#github") },
             { id: "skills", label: "Skills", group: "Navigate", icon: <Code2 size={16} />, action: () => go("#skills") },
             { id: "education", label: "Education", group: "Navigate", icon: <GraduationCap size={16} />, action: () => go("#education") },
+            { id: "music", label: "Music", hint: "What I code to", group: "Navigate", icon: <Music4 size={16} />, action: () => go("#music") },
         ];
+
+        const music: Item[] = portfolioData.spotify.playlists.map((p) => ({
+            id: `pl-${p.id}`,
+            label: p.name,
+            hint: `${p.tracks.length} tracks · ${p.mood}`,
+            group: "Playlists",
+            icon: <ListMusic size={16} />,
+            keywords: p.tracks.map((t) => `${t.title} ${t.artist}`).join(" "),
+            action: () => go("#music"),
+        }));
 
         const projects: Item[] = portfolioData.projects.map((p) => ({
             id: `proj-${p.slug}`,
@@ -105,7 +117,7 @@ export default function CommandPalette() {
             { id: "li", label: "LinkedIn", group: "Links", icon: <Linkedin size={16} />, action: () => openExternal(portfolioData.linkedin) },
         ];
 
-        return [...nav, ...projects, ...actions, ...links];
+        return [...nav, ...projects, ...music, ...actions, ...links];
     }, [theme, setTheme, go, openExternal]);
 
     const filtered = useMemo(() => {
